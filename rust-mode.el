@@ -96,6 +96,8 @@ to the function arguments.  When nil, `->' will be indented one level."
   'rust-builtin-formatting-macro "0.6.0")
 (define-obsolete-face-alias 'rust-string-interpolation-face
   'rust-string-interpolation "0.6.0")
+(define-obsolete-face-alias 'rust-ampersand-face
+  'rust-borrow-operator "1.0.6")
 
 (defface rust-unsafe
   '((t :inherit font-lock-warning-face))
@@ -107,9 +109,9 @@ to the function arguments.  When nil, `->' will be indented one level."
   "Face for the question mark operator."
   :group 'rust-mode)
 
-(defface rust-ampersand-face
+(defface rust-borrow-operator
   '((t :inherit default))
-  "Face for the ampersand reference mark."
+  "Face for the borrow operator (ampersand symbol)."
   :group 'rust-mode)
 
 (defface rust-builtin-formatting-macro
@@ -479,7 +481,7 @@ Does not match type annotations of the form \"foo::<\"."
      ;; Question mark operator
      ("\\?" . 'rust-question-mark)
      ("\\(&+\\)\\(?:'\\(?:\\<\\|_\\)\\|\\<\\|[[({:*_|]\\)"
-      1 'rust-ampersand-face)
+      1 'rust-borrow-operator)
      ;; Numbers with type suffix
      (,rust-number-with-type 1 font-lock-type-face)
      )

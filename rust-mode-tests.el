@@ -1407,60 +1407,60 @@ list of substrings of `STR' each followed by its face."
 (ert-deftest font-lock-ampersand ()
   (rust-test-font-lock
    "f(&a)"
-   '("&" rust-ampersand-face))
+   '("&" rust-borrow-operator))
   (rust-test-font-lock
    "a && b &&& c"
    nil)
   (rust-test-font-lock
    "&'a v"
-   '("&" rust-ampersand-face
+   '("&" rust-borrow-operator
      "a" font-lock-variable-name-face))
   (rust-test-font-lock
    "&'static v"
-   '("&" rust-ampersand-face
+   '("&" rust-borrow-operator
      "static" font-lock-keyword-face))
   (rust-test-font-lock
    "&mut v"
-   '("&" rust-ampersand-face
+   '("&" rust-borrow-operator
      "mut" font-lock-keyword-face))
   (rust-test-font-lock
    "&f(&x)"
-   '("&" rust-ampersand-face
-     "&" rust-ampersand-face))
+   '("&" rust-borrow-operator
+     "&" rust-borrow-operator))
   (rust-test-font-lock
    "fn f(x: &X)"
    '("fn" font-lock-keyword-face
      "f" font-lock-function-name-face
      "x" font-lock-variable-name-face
-     "&" rust-ampersand-face
+     "&" rust-borrow-operator
      "X" font-lock-type-face))
   (rust-test-font-lock
    "f(&X{x})"
-   '("&" rust-ampersand-face
+   '("&" rust-borrow-operator
      "X" font-lock-type-face))
   (rust-test-font-lock
    "let x: &'_ f64 = &1.;"
    '("let" font-lock-keyword-face
      "x" font-lock-variable-name-face
-     "&" rust-ampersand-face
+     "&" rust-borrow-operator
      "_" font-lock-variable-name-face
      "f64" font-lock-type-face
-     "&" rust-ampersand-face))
+     "&" rust-borrow-operator))
   (rust-test-font-lock
    "let x = &&1;"
    '("let" font-lock-keyword-face
      "x" font-lock-variable-name-face
-     "&&" rust-ampersand-face))
+     "&&" rust-borrow-operator))
   (rust-test-font-lock
    "let x = &*y;"
    '("let" font-lock-keyword-face
      "x" font-lock-variable-name-face
-     "&" rust-ampersand-face))
+     "&" rust-borrow-operator))
   (rust-test-font-lock
    "let x = &::std::f64::consts::PI;"
    '("let" font-lock-keyword-face
      "x" font-lock-variable-name-face
-     "&" rust-ampersand-face
+     "&" rust-borrow-operator
      "std" font-lock-constant-face
      "f64" font-lock-type-face
      "consts" font-lock-constant-face
@@ -1469,26 +1469,26 @@ list of substrings of `STR' each followed by its face."
    "let x = &(1, 2);"
    '("let" font-lock-keyword-face
      "x" font-lock-variable-name-face
-     "&" rust-ampersand-face))
+     "&" rust-borrow-operator))
   (rust-test-font-lock
    "let x = &{1};"
    '("let" font-lock-keyword-face
      "x" font-lock-variable-name-face
-     "&" rust-ampersand-face))
+     "&" rust-borrow-operator))
   (rust-test-font-lock
    "let f = &|x| {x + 1};"
    '("let" font-lock-keyword-face
      "f" font-lock-variable-name-face
-     "&" rust-ampersand-face))
+     "&" rust-borrow-operator))
   (rust-test-font-lock
    "let x: &_ = &1;"
    '("let" font-lock-keyword-face
      "x" font-lock-variable-name-face
-     "&" rust-ampersand-face
-     "&" rust-ampersand-face))
+     "&" rust-borrow-operator
+     "&" rust-borrow-operator))
   (rust-test-font-lock
    "&[1,2]"
-   '("&" rust-ampersand-face)))
+   '("&" rust-borrow-operator)))
 
 (ert-deftest font-lock-if-let-binding ()
   (rust-test-font-lock
@@ -1835,7 +1835,7 @@ this_is_not_a_string();)"
      "foo" font-lock-type-face
      "x" font-lock-variable-name-face
      ;; This union is the name of a lifetime.
-     "&" rust-ampersand-face
+     "&" rust-borrow-operator
      "union" font-lock-variable-name-face
      "bar" font-lock-type-face)))
 
