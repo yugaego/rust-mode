@@ -114,6 +114,11 @@ to the function arguments.  When nil, `->' will be indented one level."
   "Face for the borrow operator (ampersand symbol)."
   :group 'rust-mode)
 
+(defface rust-dereference-operator
+  '((t :inherit rust-borrow-operator))
+  "Face for the dereference operator (star symbol)."
+  :group 'rust-mode)
+
 (defface rust-builtin-formatting-macro
   '((t :inherit font-lock-builtin-face))
   "Face for builtin formatting macros (print! &c.)."
