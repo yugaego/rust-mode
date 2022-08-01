@@ -124,6 +124,11 @@ to the function arguments.  When nil, `->' will be indented one level."
   "Face for interpolating braces in builtin formatting macro strings."
   :group 'rust-mode)
 
+(defface rust-attribute
+  '((t :inherit font-lock-preprocessor-face))
+  "Face for attributes (general metadata)."
+  :group 'rust-mode)
+
 ;;; Syntax
 
 (defun rust-re-word (inner) (concat "\\<" inner "\\>"))
@@ -427,7 +432,7 @@ Does not match type annotations of the form \"foo::<\"."
 
      ;; Attributes like `#[bar(baz)]` or `#![bar(baz)]` or `#[bar = "baz"]`
      (,(rust-re-grab (concat "#\\!?\\[" rust-re-ident "[^]]*\\]"))
-      1 font-lock-preprocessor-face keep)
+      1 'rust-attribute keep)
 
      ;; Builtin formatting macros
      (,(concat (rust-re-grab

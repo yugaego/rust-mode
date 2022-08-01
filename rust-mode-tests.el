@@ -1271,27 +1271,27 @@ list of substrings of `STR' each followed by its face."
 (ert-deftest font-lock-attribute-simple ()
   (rust-test-font-lock
    "#[foo]"
-   '("#[foo]" font-lock-preprocessor-face)))
+   '("#[foo]" rust-attribute)))
 
 (ert-deftest font-lock-attribute-inner ()
   (rust-test-font-lock
    "#![foo]"
-   '("#![foo]" font-lock-preprocessor-face)))
+   '("#![foo]" rust-attribute)))
 
 (ert-deftest font-lock-attribute-key-value ()
   (rust-test-font-lock
    "#[foo = \"bar\"]"
-   '("#[foo = " font-lock-preprocessor-face
+   '("#[foo = " rust-attribute
      "\"bar\"" font-lock-string-face
-     "]" font-lock-preprocessor-face)))
+     "]" rust-attribute)))
 
 (ert-deftest font-lock-attribute-around-comment ()
   (rust-test-font-lock
    "#[foo /* bar */]"
-   '("#[foo " font-lock-preprocessor-face
+   '("#[foo " rust-attribute
      "/* " font-lock-comment-delimiter-face
      "bar */" font-lock-comment-face
-     "]" font-lock-preprocessor-face)))
+     "]" rust-attribute)))
 
 (ert-deftest font-lock-attribute-inside-string ()
   (rust-test-font-lock
